@@ -10,76 +10,112 @@ package Aula04;
  * @author romulo
  */
 public class ClienteConta {
-    
-    String nome; int conta; float saldo;
-    //o valor deste atributo é compartilhado/constante entre todas as estancias da classe
-    static float taxa_CPMF = 0.01F; // Exemplo 1%
-    
-    ClienteConta(String pNome, int pConta, int pSaldo) {
-    //Construtor com 3 parametros
-        this.nome = pNome;
-        this.conta = pConta;
-        this.saldo = pSaldo;
-    }
-    ClienteConta(String pNome, int pConta){
-    //Construtor com 2 parametros para contas que sejam abertas com no minimo 200 reais
-    //O this fará referência ao construtor da classe com 3 parametros
-        this(pNome,pConta,200);
-    }
-    
 
-   
-    ClienteConta(){
-    //Construtor padrao ou sem parametros
-        this.nome = "Anonimo";
-        this.conta = 0000;
-        this.saldo = 200;
+    private String nome;
+    private int prox_conta = 0;
+    private int conta;
+    private float saldo;
+    private static float taxa_CPMF = 0.38f;
+
+    ClienteConta(String nome) {
+        this.nome = nome;
+        this.conta = this.prox_conta++;
+        this.saldo = 0;
     }
-    
-    void RealizaSaque (float valor) {
-        if (valor > saldo) {
-            System.out.println("Saldo insuficiente");
-        } else {
-            this.saldo -= valor;
-        }
+
+    public String getNome() {
+        return this.nome;
     }
-    
-    float RequisitaSaldo(){
-        return saldo;
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
-    void RealizaDeposito (float pValor){
-        this.saldo += pValor*(1- taxa_CPMF);
+
+    public int getConta() {
+        return this.conta;
     }
-    void RealizaDeposito (float pValorNota, int pQuantNotas){
-        RealizaDeposito(pValorNota*pQuantNotas);
+
+    public void setConta(int conta) {
+        this.conta = conta;
     }
-    void TransferirOutraConta(float pValor, ClienteConta pBeneficiado){
-        this.RealizaSaque(pValor*(1- taxa_CPMF));
-        pBeneficiado.RealizaDeposito(pValor*(1- taxa_CPMF));
+
+    public float getSaldo() {
+        return this.saldo;
     }
-    //outro metodo de TransferirOutraConta
-    void TransferirOutraConta1(float pValor, ClienteConta pBeneficiado){
-        this.saldo = this.saldo - pValor;
-        pBeneficiado.saldo = pBeneficiado.saldo + pValor;
+
+    public void setSaldo(float saldo) {
+        this.saldo = saldo;
     }
-    
-    public static void main(String[] args) {
-        ClienteConta cliente1;
-        ClienteConta cliente2, cliente3;
-        //para o new funcionar deve haver o construtor ClienteBanco(pNome,pConta,pSaldo)
-        cliente1 = new ClienteConta ("eu",0001,500); 
-        cliente2 = new ClienteConta ("voce",0002);
-        cliente3 = new ClienteConta ();
-        System.out.println("Nome do cliente: "+ cliente1.nome);
-        System.out.println("Saldo: "+ cliente1.saldo);
-        System.out.println("Nome do cliente: "+ cliente2.nome);
-        System.out.println("Saldo: "+ cliente2.saldo);
-        
-        cliente1.RealizaDeposito(230);
-        cliente2.RealizaDeposito(50, 8);
-        cliente1.TransferirOutraConta(100, cliente2);
-        
-        
+
+    public float getCPMF() {
+        return this.taxa_CPMF;
+    }
+
+    public float RequisitaSaldo() {
+        return this.getSaldo();
+    }
+
+    public void RealizaSaque(float valor) {
+        this.setSaldo(this.getSaldo() - valor);
+    }
+
+}
+
+class ClienteCC extends ClienteConta {
+
+    private float especial;
+
+    ClienteCC(String nome, float especial) {
+        super(nome);
+        this.especial = especial;
+    }
+
+    public float getEspecial() {
+        return this.especial;
+    }
+
+    public void setEspecial(float especial) {
+        this.especial = especial;
+    }
+
+}
+
+class ClientePoupanca extends ClienteConta {
+
+    private float taxa_juros;
+
+    ClientePoupanca(String nome) {
+        super(nome);
+        this.taxa_juros = 1.0f;
+    }
+
+    public float TaxaJuros() {
+        return this.taxa_juros;
+    }
+
+    public void TaxaJuros(float taxa_juros) {
+        this.taxa_juros = taxa_juros;
     }
 }
 
+class ClientePF extends ClienteCC {
+
+    ClientePF(String nome, float especial) {
+        super(nome, especial);
+    }
+}
+
+class ClientePJ extends ClienteCC {
+
+    ClientePJ(String nome, float especial) {
+        super(nome, especial);
+    }
+}
+
+class Conta {
+
+    public static void main(String[] args) {
+
+        
+    }
+}
