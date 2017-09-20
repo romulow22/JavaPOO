@@ -4,7 +4,7 @@ package AD120172;
  * @author romulo
  */
 class Questao {
-
+    
     private String enunciado;
 
     public Questao(String enunciado) {
@@ -68,23 +68,38 @@ class VerdadeiroFalso extends Questao{
         return this.getEnunciado() + "\n" + txt;
     }
 }
+
+class Prova{
+    private Questao[] questoes;
+    
+    public Prova(int qtdItens){
+        questoes = new Questao[qtdItens];
+        questoes[0] = new Discursiva("Qual é o numero da última versão do Java?","8");
+        ItemVerdadeiroFalso[] itens = new ItemVerdadeiroFalso[3];
+        itens[0] = new ItemVerdadeiroFalso("Java foi lançado há mais de 20 anos atras", true);
+        itens[1] = new ItemVerdadeiroFalso("OO surgiu com a linguagem Java", false);
+        itens[2] = new ItemVerdadeiroFalso("Eclipse é um editor de texto multilinguagem", true);
+        questoes[1] = new VerdadeiroFalso(itens);
+    }
+    public String toString(){
+        String prova = "";
+        int num = 1;
+        for (Questao q : this.questoes) {
+            prova += num + ")" + q + "\n";
+            num ++;
+        }
+        return prova;
+    }
+    public void imprimir(Object prova){
+        System.out.println(prova);
+    
+    }
+}
+    
 public class AD1_2017_2 {
 
     public static void main(String[] args) {
-        Questao[] prova = new Questao[2];
-        prova[0] = new Discursiva("Qual é o número da última versão de Java?", "8");
-        ItemVerdadeiroFalso[] itens = new ItemVerdadeiroFalso[3];
-        itens[0] = new ItemVerdadeiroFalso("Java foi lançada há mais de 20 anos atrás", true);
-        itens[1] = new ItemVerdadeiroFalso("OO surgiu com a linguagem Java", false);
-        itens[2] = new ItemVerdadeiroFalso("Eclipse é um editor de texto multilinguagem", true);
-        prova[1] = new VerdadeiroFalso(itens);
-
-        int num = 1;
-        for (Questao q : prova) {
-            System.out.print(num + ") ");
-            System.out.println(q); 
-            num++;
-        }
-
+        Prova prova = new Prova(2);
+        prova.imprimir(prova);
     }
 }
