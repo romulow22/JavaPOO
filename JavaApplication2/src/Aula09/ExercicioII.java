@@ -3,21 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Aula09;
-
 import java.util.*;
-
-
-public class Collection {
+/**
+ *
+ * @author romulo
+ */
+public class ExercicioII {
     private static final String[] colors = {"vermelho", "preto", "branco", "amarelo"};
 
-    public Collection() {
-        List<String> list = new ArrayList<String>();
+    public ExercicioII() {
+        Set<String> set = new TreeSet<String>();
+        Arrays.sort(colors);
         for (String color: colors) {
-            list.add(color);
+            set.add(color);
         }
-        this.imprimeLista(list);
+        set.add("branco");
+        set.add("preto");
+        this.imprimeLista(set);
     }
 
     private void imprimeLista(Collection<String> c) {
@@ -29,6 +32,6 @@ public class Collection {
     }
 
     public static void main(String[] args) {
-        new Collection();
+        new ExercicioII();
     }
 }

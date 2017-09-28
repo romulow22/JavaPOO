@@ -3,17 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Aula09;
-
 import java.util.*;
-
-
-public class Collection {
+/**
+ *
+ * @author romulo
+ */
+public class Ex3 {
     private static final String[] colors = {"vermelho", "preto", "branco", "amarelo"};
 
-    public Collection() {
+    public Ex3() {
         List<String> list = new ArrayList<String>();
+        Arrays.sort(colors);
         for (String color: colors) {
             list.add(color);
         }
@@ -29,6 +30,6 @@ public class Collection {
     }
 
     public static void main(String[] args) {
-        new Collection();
+        new Ex3();
     }
 }
