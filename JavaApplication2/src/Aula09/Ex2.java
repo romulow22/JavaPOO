@@ -5,10 +5,9 @@
  */
 package Aula09;
 import java.util.*;
-/**
- *
- * @author romulo
- */
+
+
+//<x> Indica que X é um termo generico (tipo x)
 class MinhaLista<T> {
     private List<T> itens = new ArrayList<T>();
     void add (T item) {

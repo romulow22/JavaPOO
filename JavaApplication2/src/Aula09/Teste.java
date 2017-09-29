@@ -2,10 +2,6 @@
 package Aula09;
 import java.util.LinkedList;
 
-//Coleções são estruturadas em 3 camadas:
-// Interfaces (List)
-// Classes abstratas (AbstractList)
-// Classes de implementação (Arraylist)
 
 
 public class Teste {

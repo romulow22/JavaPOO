@@ -5,10 +5,10 @@
  */
 package Aula09;
 import java.util.*;
-/**
- *
- * @author romulo
- */
+
+
+
+
 public class Ex3 {
     private static final String[] colors = {"vermelho", "preto", "branco", "amarelo"};
 

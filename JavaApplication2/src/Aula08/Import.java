@@ -15,7 +15,7 @@ public class Import {
 //private = só pode ser acessado pela propria classe
 //protected = sáo acessados pelas subclasses e pelas classes do pacote
 //sem modificador = são acessados pelas classes do pacote
-public class Stack {        // Stack é exportada
+class Stack {        // Stack é exportada
     private int[] data;
     private int top_index;
     public Stack(int size) {
